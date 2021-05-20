@@ -6,10 +6,10 @@ Création de webservice avec Spring et Postgresql
 
 Ce projet a été testé avec:
 
-Java 1.8.0
-Maven
-Eclipse ou Spring tool suite
-Postgresql
+- Java 1.8.0
+- Maven
+- Eclipse ou Spring tool suite
+- Postgresql
 
 ## Lancer le projet
 
