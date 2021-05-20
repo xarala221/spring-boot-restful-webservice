@@ -1,4 +1,4 @@
-package co.xarala.model;
+package co.xarala.models;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package co.xarala.controller;
+package co.xarala.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.xarala.model.Tutorial;
+import co.xarala.models.Tutorial;
 import co.xarala.repository.TutorialRepository;
 
 
@@ -35,6 +36,7 @@ public class TutorialController {
   public ResponseEntity<List<Tutorial>> getAllTutorials(@RequestParam(required = false) String title) {
     try {
       List<Tutorial> tutorials = new ArrayList<Tutorial>();
+   
 
       if (title == null)
         tutorialRepository.findAll().forEach(tutorials::add);
@@ -61,7 +63,8 @@ public class TutorialController {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
   }
-
+  
+  @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
   @PostMapping("/tutorials")
   public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
     try {
@@ -88,6 +91,7 @@ public class TutorialController {
     }
   }
 
+  @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
   @DeleteMapping("/tutorials/{id}")
   public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") long id) {
     try {
@@ -98,6 +102,7 @@ public class TutorialController {
     }
   }
 
+  @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
   @DeleteMapping("/tutorials")
   public ResponseEntity<HttpStatus> deleteAllTutorials() {
     try {
@@ -108,7 +113,9 @@ public class TutorialController {
     }
 
   }
+  
 
+  @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
   @GetMapping("/tutorials/published")
   public ResponseEntity<List<Tutorial>> findByPublished() {
     try {

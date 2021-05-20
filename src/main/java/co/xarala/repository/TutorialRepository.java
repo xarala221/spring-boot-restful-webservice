@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import co.xarala.model.Tutorial;
+import co.xarala.models.Tutorial;
 
 
 
