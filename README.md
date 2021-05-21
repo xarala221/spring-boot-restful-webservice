@@ -9,7 +9,7 @@ Ce projet a été testé avec:
 - Java 1.8.0
 - Maven
 - Eclipse ou Spring tool suite
-- Postgresql
+- MySQL
 
 ## Lancer le projet
 
