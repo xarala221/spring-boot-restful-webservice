@@ -32,8 +32,8 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -54,7 +54,7 @@
 		  <groupId>javax.validation</groupId>
 		  <artifactId>validation-api</artifactId>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
